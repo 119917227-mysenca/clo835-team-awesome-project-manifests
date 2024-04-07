@@ -3,6 +3,6 @@ kind: ConfigMap
 metadata:
   name: app-config
 data:
-  group-name: "Team AWSome"
+  groupName: "Team AWSome"
   slogan: "We put the AWS in AWESOME"
-  image-url: "https://blusignalsystems.com/wp-content/uploads/2016/12/Savin-NY-Website-Background-Web1.jpg"
+  imageURL: "https://blusignalsystems.com/wp-content/uploads/2016/12/Savin-NY-Website-Background-Web1.jpg"
