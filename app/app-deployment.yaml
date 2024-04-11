@@ -20,7 +20,7 @@ spec:
                 image: 407373101635.dkr.ecr.us-east-1.amazonaws.com/project-app:e4d41d0f96
                 env:
                     -   name: DBHOST
-                        value: "db-service"
+                        value: "db-service.final.svc.cluster.local"
                     -   name: DBPORT
                         value: "3306"
                     -   name: DATABASE
