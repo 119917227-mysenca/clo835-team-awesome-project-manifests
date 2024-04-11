@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: app-config
+  namespace: final
 data:
   groupName: "Team AWSome"
   slogan: "We put the AWS in AWESOME"

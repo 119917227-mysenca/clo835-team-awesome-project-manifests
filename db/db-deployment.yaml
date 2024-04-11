@@ -33,5 +33,7 @@ spec:
                 - name: db-data
                   persistentVolumeClaim:
                     claimName: db-data
+            imagePullSecrets:
+                - name: creds
             dnsPolicy: ClusterFirst
             restartPolicy: Always
