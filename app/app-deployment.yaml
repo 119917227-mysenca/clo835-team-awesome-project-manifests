@@ -35,17 +35,17 @@ spec:
                             secretKeyRef:
                                 name: db-secrets
                                 key: password
-                    -   name: groupName
+                    -   name: GROUPNAME 
                         valueFrom:
                             configMapKeyRef:
                                 name: app-config
                                 key: groupName
-                    -   name: slogan
+                    -   name: SLOGAN
                         valueFrom:
                             configMapKeyRef:
                                 name: app-config
                                 key: slogan
-                    -   name: imageURL
+                    -   name: IMAGEURL
                         valueFrom:
                             configMapKeyRef:
                                 name: app-config
