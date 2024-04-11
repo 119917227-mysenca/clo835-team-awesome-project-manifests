@@ -20,7 +20,7 @@ spec:
                 image: 407373101635.dkr.ecr.us-east-1.amazonaws.com/project-app:e4d41d0f96
                 env:
                     -   name: DBHOST
-                        value: "10.244.0.5"
+                        value: "10.244.0.6"
                     -   name: DBPORT
                         value: "3306"
                     -   name: DATABASE
@@ -35,6 +35,21 @@ spec:
                             secretKeyRef:
                                 name: db-secrets
                                 key: password
+                    -   name: groupName
+                        valueFrom:
+                            configMapKeyRef:
+                                name: app-config
+                                key: groupName
+                    -   name: slogan
+                        valueFrom:
+                            configMapKeyRef:
+                                name: app-config
+                                key: slogan
+                    -   name: imageURL
+                        valueFrom:
+                            configMapKeyRef:
+                                name: app-config
+                                key: imageURL
                 ports:
                     - containerPort: 8080
             dnsPolicy: ClusterFirst
