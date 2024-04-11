@@ -18,6 +18,9 @@ spec:
             containers:
             -   name: mysql-db
                 image: 407373101635.dkr.ecr.us-east-1.amazonaws.com/project-db:e4d41d0f96
+                volumeMounts:
+                -   mountPath: /var/lib/mysql
+                    name: db-data
                 env:
                     -   name: MYSQL_ROOT_PASSWORD
                         valueFrom:
@@ -26,5 +29,9 @@ spec:
                                 key: password
                 ports:
                     - containerPort: 3306
+            volumes:
+                - name: db-data
+                  persistentVolumeClaim:
+                    claimName: db-data
             dnsPolicy: ClusterFirst
             restartPolicy: Always
