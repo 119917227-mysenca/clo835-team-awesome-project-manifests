@@ -17,7 +17,7 @@ spec:
         spec:
             containers:
             -   name: webapp
-                image: 407373101635.dkr.ecr.us-east-1.amazonaws.com/project-app:e4d41d0f96
+                image: 407373101635.dkr.ecr.us-east-1.amazonaws.com/project-app:66070b73e0
                 env:
                     -   name: DBHOST
                         value: "db-service.final.svc.cluster.local"
@@ -51,7 +51,7 @@ spec:
                                 name: app-config
                                 key: imageURL
                 ports:
-                    - containerPort: 8080
+                    - containerPort: 81
             imagePullSecrets:
                 - name: creds
             dnsPolicy: ClusterFirst
