@@ -5,7 +5,7 @@ metadata:
   namespace: final
 subjects:
 - kind: serviceAccount 
-  name: ns-role
+  name: ns-service-Account
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: Role
