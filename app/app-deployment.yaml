@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: webapp
+    namespace: final
+    labels:
+        app: employees
+spec:
+    replicas: 3
+    selector:
+        matchLabels:
+            app: employees
+    template:
+        metadata:
+            labels:
+                app: employees
+        spec:
+            containers:
+            -   name: webapp
+                image: 407373101635.dkr.ecr.us-east-1.amazonaws.com/project-app:ad520d13db
+                env:
+                    -   name: DBHOST
+                        value: "db-service.final.svc.cluster.local"
+                    -   name: DBPORT
+                        value: "3306"
+                    -   name: DATABASE
+                        value: "employees"
+                    -   name: DBUSER
+                        valueFrom:
+                            secretKeyRef:
+                                name: db-secrets
+                                key: user
+                    -   name: DBPWD
+                        valueFrom:
+                            secretKeyRef:
+                                name: db-secrets
+                                key: password
+                    -   name: GROUPNAME 
+                        valueFrom:
+                            configMapKeyRef:
+                                name: app-config
+                                key: groupName
+                    -   name: SLOGAN
+                        valueFrom:
+                            configMapKeyRef:
+                                name: app-config
+                                key: slogan
+                    -   name: IMAGEURL
+                        valueFrom:
+                            configMapKeyRef:
+                                name: app-config
+                                key: imageURL
+                    -   name: AWS_ACCESS_KEY_ID
+                        valueFrom:
+                            secretKeyRef:
+                                name: aws-credentials
+                                key: AWS_ACCESS_KEY_ID
+                    -   name: AWS_SECRET_ACCESS_KEY
+                        valueFrom:
+                            secretKeyRef:
+                                name: aws-credentials
+                                key: AWS_SECRET_ACCESS_KEY
+                    -   name: AWS_SESSION_TOKEN
+                        valueFrom:
+                            secretKeyRef:
+                                name: aws-credentials
+                                key: AWS_SESSION_TOKEN
+                    -   name: ENVIRONMENT
+                        value: "prod"
+                ports:
+                    - containerPort: 81
+            imagePullSecrets:
+                - name: creds
+            dnsPolicy: ClusterFirst
+            restartPolicy: Always

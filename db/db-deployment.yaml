@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: mysql-db
+    namespace: final
+    labels:
+        app: mysql
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: mysql
+    template:
+        metadata:
+            labels:
+                app: mysql
+        spec:
+            containers:
+            -   name: mysql-db
+                image: 407373101635.dkr.ecr.us-east-1.amazonaws.com/project-db:e4d41d0f96
+                volumeMounts:
+                -   mountPath: /var/lib/mysql
+                    name: db-data
+                env:
+                    -   name: MYSQL_ROOT_PASSWORD
+                        valueFrom:
+                            secretKeyRef:
+                                name: db-secrets
+                                key: password
+                ports:
+                    - containerPort: 3306
+            volumes:
+                - name: db-data
+                  persistentVolumeClaim:
+                    claimName: db-data
+            imagePullSecrets:
+                - name: creds
+            dnsPolicy: ClusterFirst
+            restartPolicy: Always

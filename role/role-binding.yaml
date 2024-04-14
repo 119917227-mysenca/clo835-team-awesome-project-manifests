@@ -1,0 +1,13 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: ns-role-binding 
+  namespace: final
+subjects:
+- kind: ServiceAccount 
+  name: ns-service-account
+  apiGroup: ""
+roleRef:
+  kind: Role
+  name: ns-role
+  apiGroup: ""
