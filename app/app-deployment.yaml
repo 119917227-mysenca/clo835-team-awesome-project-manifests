@@ -17,7 +17,7 @@ spec:
         spec:
             containers:
             -   name: webapp
-                image: 407373101635.dkr.ecr.us-east-1.amazonaws.com/project-app:66070b73e0
+                image: 407373101635.dkr.ecr.us-east-1.amazonaws.com/project-app:c4820f7e81
                 env:
                     -   name: DBHOST
                         value: "db-service.final.svc.cluster.local"
@@ -50,6 +50,23 @@ spec:
                             configMapKeyRef:
                                 name: app-config
                                 key: imageURL
+                    -   name: AWS_ACCESS_KEY_ID
+                        valueFrom:
+                            secretKeyRef:
+                                name: aws-credentials
+                                key: AWS_ACCESS_KEY_ID
+                    -   name: AWS_SECRET_ACCESS_KEY
+                        valueFrom:
+                            secretKeyRef:
+                                name: aws-credentials
+                                key: AWS_SECRET_ACCESS_KEY
+                    -   name: AWS_SESSION_TOKEN
+                        valueFrom:
+                            secretKeyRef:
+                                name: aws-credentials
+                                key: AWS_SESSION_TOKEN
+                    -   name: ENVIRONMENT
+                        value: "prod"
                 ports:
                     - containerPort: 81
             imagePullSecrets:
