@@ -6,7 +6,7 @@ metadata:
     labels:
         app: employees
 spec:
-    replicas: 3
+    replicas: 1
     selector:
         matchLabels:
             app: employees
@@ -17,7 +17,7 @@ spec:
         spec:
             containers:
             -   name: webapp
-                image: 407373101635.dkr.ecr.us-east-1.amazonaws.com/project-app:ad520d13db
+                image: 407373101635.dkr.ecr.us-east-1.amazonaws.com/project-app:d44033d186
                 env:
                     -   name: DBHOST
                         value: "db-service.final.svc.cluster.local"
