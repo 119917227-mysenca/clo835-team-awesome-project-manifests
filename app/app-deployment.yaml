@@ -17,7 +17,7 @@ spec:
         spec:
             containers:
             -   name: webapp
-                image: 407373101635.dkr.ecr.us-east-1.amazonaws.com/project-app:c4820f7e81
+                image: 407373101635.dkr.ecr.us-east-1.amazonaws.com/project-app:ad520d13db
                 env:
                     -   name: DBHOST
                         value: "db-service.final.svc.cluster.local"
