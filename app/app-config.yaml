@@ -6,4 +6,4 @@ metadata:
 data:
   groupName: "Team AWSome"
   slogan: "We put the AWS in AWESOME"
-  imageURL: "s3://rishi-final-test/seneca.jpg"
+  imageURL: "s3://clo835-final-group5/seneca.jpg"
