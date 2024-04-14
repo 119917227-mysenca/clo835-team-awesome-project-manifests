@@ -6,4 +6,4 @@ metadata:
 data:
   groupName: "Team AWSome"
   slogan: "We put the AWS in AWESOME"
-  imageURL: "https://blusignalsystems.com/wp-content/uploads/2016/12/Savin-NY-Website-Background-Web1.jpg"
+  imageURL: "s3://rishi-final-test/seneca.jpg"
